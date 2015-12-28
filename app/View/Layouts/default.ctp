@@ -41,7 +41,7 @@
 		<ul class="menu">
 	<!--	<li>	<?php echo $this->here; ?></li> -->
 		<li <?php echo ($this->here=="/jobfinds/")?'class="current"':'' ?> ><a href="<?php echo $this->webroot; ?>"><i class="icon-home"></i> Home</a></li>
-		<li <?php echo ($this->here=="/jobfinds/jobs/browse")?'class="current"':'' ?> ><a href="<?php echo $this->webroot; ?>jobs/browse"><i class="icon-desktop"></i> Browse Jobs</a></li>
+		<li <?php echo (($this->here=="/jobfinds/jobs/browse"))?'class="current"':'' ?> ><a href="<?php echo $this->webroot; ?>jobs/browse"><i class="icon-desktop"></i> Browse Jobs</a></li>
 		<li <?php echo ($this->here=="/jobfinds/users/register")?'class="current"':'' ?>><a href="<?php echo $this->webroot; ?>users/register"><i class="icon-user"></i> Register</a></li>
 		<li <?php echo ($this->here=="/jobfinds/users/login")?'class="current"':'' ?>><a href="<?php echo $this->webroot; ?>users/login"><i class="icon-key"></i> Login</a></li>
 		</ul>

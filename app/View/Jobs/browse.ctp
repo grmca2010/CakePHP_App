@@ -1,7 +1,21 @@
 <?php echo $this->element("search"); ?>
   <div class="col_12 column">
+    <ul id="category_block">
+    <?php foreach($categories as $category) : ?>
+      <li><?php echo $this->Html->link($category["Category"]["name"],array('action' => 'browse', $category["Category"]["id"])); ?>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+  </div>
+  <div class="col_12 column">
     <h3>Latest Job Listings</h3>
+    <?php if(sizeof($jobs)==0){
+
+        echo "<h5>OOps, There is no job under this category</h5>";
+
+    } ?>
     <ul id="listings">
+
       <?php foreach($jobs as $job) : ?>
         <?php #echo "<pre>";print_r($job);
          $single_job=$job["Job"];
