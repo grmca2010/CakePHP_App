@@ -75,5 +75,26 @@ class JobsController extends AppController {
 
   		$this->set('jobs', $jobs);
     }
+
+    public function add() {
+      $this->set("title_page_layout","Job Finds - Add Job");
+      $categories=$this->Job->Category->find("list");
+      $this->set("categories",$categories);
+
+      $types=$this->Job->Type->find("list");
+      $this->set("types",$types);
+
+      If($this->request->is("post")){
+          $this->Job->create();
+          $this->request->data["job"]["user_id"]="1";
+          if($this->Job->save($this->request->data)){
+              $this->Session->setFlash(__("Job has been added in the list"));
+              return $this->redirect(array("action"=>"index"));
+          }
+          $this->Session->setFlash(__("The job has not been created.Contact support team('Senbagavalli')"));
+
+      }
+
+  	}
 }
 ?>

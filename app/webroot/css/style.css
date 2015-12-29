@@ -265,3 +265,11 @@ footer{
 	padding:30px 0 30px 0;
 	text-align:center;
 }
+
+#flashMessage{
+	background: #e5f2be;
+	border:2px solid #bedf5d;
+	padding:10px;
+	font-weight:bold;
+
+}

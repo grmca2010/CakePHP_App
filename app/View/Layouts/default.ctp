@@ -30,9 +30,12 @@
 			<h1><a href="<?php echo $this->webroot; ?>"><strong>Job</strong>Finds</a></h1>
 		</div>
 		<div class="col_6 column right">
-			<form id="add_job_link" action="<?php echo $this->webroot; ?>jobs/add">
+			<!--<form id="add_job_link" action="<?php echo $this->webroot; ?>jobs/add">
 				<button class="large green"><i class="icon-plus"></i>Add Job</button>
-			</form>
+			</form>-->
+			<a href="<?php echo $this->webroot; ?>jobs/add">
+				<button class="large green"><i class="icon-plus"></i>Add Job</button>
+			</a>
 		</div>
 	</header>
 
@@ -46,11 +49,13 @@
 		<li <?php echo ($this->here=="/jobfinds/users/login")?'class="current"':'' ?>><a href="<?php echo $this->webroot; ?>users/login"><i class="icon-key"></i> Login</a></li>
 		</ul>
 	</div>
-
-<?php echo $this->Session->flash(); ?>
-<?php echo $this->fetch('content'); ?>
-
-		<div class="clearfix"></div>
+<div class="clearfix"></div>
+	<div id="content">
+	 <div class="col-12">
+		<?php echo $this->Session->flash(); ?>
+		<?php echo $this->fetch('content'); ?>
+	</div>
+	<div class="clearfix"></div>
 		<footer><?php echo $this->element('sql_dump'); ?>
 			<p>Copyright @copy; 2014, JobFinds, All Rights Reserved</p>
 		</footer>
