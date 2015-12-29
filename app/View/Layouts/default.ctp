@@ -26,27 +26,41 @@
 <body>
 <div id="container" class="grid">
 	<header>
-		<div class="col_6 column">
-			<h1><a href="<?php echo $this->webroot; ?>"><strong>Job</strong>Finds</a></h1>
-		</div>
-		<div class="col_6 column right">
-			<!--<form id="add_job_link" action="<?php echo $this->webroot; ?>jobs/add">
-				<button class="large green"><i class="icon-plus"></i>Add Job</button>
-			</form>-->
-			<a href="<?php echo $this->webroot; ?>jobs/add">
-				<button class="large green"><i class="icon-plus"></i>Add Job</button>
-			</a>
-		</div>
-	</header>
+		<div class="col_4 column">
+				<h1><a href="<?php echo $this->webroot; ?>"><strong>Job</strong>Finds</a></h1>
+			</div>
+			<div class="col_6 column right welcome">
+						<?php if(AuthComponent::user('id')): ?>
+							<h6>Welcome <strong><?php echo $userData['username']; ?></strong></h6>
 
+						<?php endif; ?>
+					</div>
+			<div class="col_2 column right">
+				<!--<form id="add_job_link" action="<?php echo $this->webroot; ?>jobs/add">
+					<button class="large green"><i class="icon-plus"></i>Add Job</button>
+				</form>
+				<a href="">
+					<button class="large green"><i class="icon-plus"></i>Add Job</button>
+				</a>-->
+			</div>
+	</header>
 	<div class="col_12 column">
 		<!-- Menu Horizontal -->
 		<ul class="menu">
-	<!--	<li>	<?php echo $this->here; ?></li> -->
+		<!-- <li><?php echo AuthComponent::user('id')."sdfsd"; ?></li> -->
 		<li <?php echo ($this->here=="/jobfinds/")?'class="current"':'' ?> ><a href="<?php echo $this->webroot; ?>"><i class="icon-home"></i> Home</a></li>
 		<li <?php echo (($this->here=="/jobfinds/jobs/browse"))?'class="current"':'' ?> ><a href="<?php echo $this->webroot; ?>jobs/browse"><i class="icon-desktop"></i> Browse Jobs</a></li>
-		<li <?php echo ($this->here=="/jobfinds/users/register")?'class="current"':'' ?>><a href="<?php echo $this->webroot; ?>users/register"><i class="icon-user"></i> Register</a></li>
-		<li <?php echo ($this->here=="/jobfinds/users/login")?'class="current"':'' ?>><a href="<?php echo $this->webroot; ?>users/login"><i class="icon-key"></i> Login</a></li>
+		<?php
+		if(AuthComponent::user('id')) { ?>
+			<li <?php echo ($this->here=="/jobfinds/jobs/dashboard")?'class="current"':'' ?>><a href="<?php echo $this->webroot; ?>jobs/dashboard"><i></i> Dashboard</a></li>
+			<li <?php echo ($this->here=="/jobfinds/jobs/add")?'class="current"':'' ?>><a href="<?php echo $this->webroot; ?>jobs/add"><i></i> Add Job</a></li>
+			<li><a href="<?php echo $this->webroot; ?>users/logout">Logout</a></li>
+		<?php } else {
+			?>
+			<li <?php echo ($this->here=="/jobfinds/users/register")?'class="current"':'' ?>><a href="<?php echo $this->webroot; ?>users/register"><i class="icon-user"></i> Register</a></li>
+			<li <?php echo ($this->here=="/jobfinds/users/login")?'class="current"':'' ?>><a href="<?php echo $this->webroot; ?>users/login"><i class="icon-key"></i> Login</a></li>
+			<?php
+		} ?>
 		</ul>
 	</div>
 <div class="clearfix"></div>
@@ -56,7 +70,7 @@
 		<?php echo $this->fetch('content'); ?>
 	</div>
 	<div class="clearfix"></div>
-		<footer><?php echo $this->element('sql_dump'); ?>
+		<footer><?php #echo $this->element('sql_dump'); ?>
 			<p>Copyright @copy; 2014, JobFinds, All Rights Reserved</p>
 		</footer>
 </div> <!-- End Grid -->
